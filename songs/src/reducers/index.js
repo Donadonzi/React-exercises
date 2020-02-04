@@ -5,7 +5,8 @@ const songsReducer = () => {
         { title: 'Kolbeh', duration: '4:30'},
         { title: 'Raz-e-Hamishegi', duration: '4:37'},
         { title: 'Chakavak', duration: '4:55'},
-        { title: 'Shabzadeh', duration: '3:45'}
+        { title: 'Shabzadeh', duration: '3:45'},
+        { title: 'Goriz', duration: '5:10'}
     ];
 };
 
