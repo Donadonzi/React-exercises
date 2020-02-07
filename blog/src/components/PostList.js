@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchPosts } from '../actions';
+import UserHeader from './UserHeader';
 
  class PostList extends React.Component {
 
@@ -9,14 +10,35 @@ import { fetchPosts } from '../actions';
         this.props.fetchPosts();
     }
 
-     render() {
+    renderList () {
+        return this.props.posts.map(post => {
+            return (
+                <div className="item" key={post.id}>
+                    <i className="large middle aligned icon user" />
+                    <div className="content">
+                        <div className="description">
+                            <h2>{post.title}</h2>
+                            <p>{post.body}</p>
+                        </div>
+                        <UserHeader userId={post.userId} />
+                    </div>
+                </div>
+            );
+        });
+    }
+
+    render() {
         return (
-            <div>
-                Post List!
+            <div className="ui relaxed divided list">
+                {this.renderList()}
             </div>
         );
-     }
+    }
  }
 
+ const mapStateToProps = state => {
+    return { posts: state.posts };
+ }; 
+
  
- export default connect(null, { fetchPosts : fetchPosts })(PostList); // First argument of connect() is always mapStateToProps(). But since we don't have it now, we pass null
+ export default connect(mapStateToProps, { fetchPosts : fetchPosts })(PostList); // First argument of connect() is always mapStateToProps(). But since we don't have it now, we pass null
