@@ -12,9 +12,7 @@ class Button extends React.Component {
 	// 	const text = this.context === 'english' ? 'Submit' : 'Soumettre';
 	// 	return <button className="ui primary button">{text}</button>;	
 	// }
-	renderClassName(value) {
-
-	}
+	
 
 	render() {
 		return (
@@ -22,7 +20,9 @@ class Button extends React.Component {
 				{ color => (
 					<button className={`ui button ${color}`}>
 						<LanguageContext.Consumer>
-							{ (value) => value === 'english' ? 'Submit' : 'Soumettre' }
+							{/* { (value) => value === 'english' ? 'Submit' : 'Soumettre' } Refactoring, cuz our context is now different */}
+							{/* Destructuring language property out of value: */}
+							{ ({ language }) => language === 'english' ? 'Submit' : 'Soumettre' } 
 						</LanguageContext.Consumer>
 					</button>
 				)}
